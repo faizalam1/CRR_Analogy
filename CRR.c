@@ -14,6 +14,7 @@ int main() {
     queue->head = (Node *) malloc(sizeof(Node));
     queue->tail = queue->head;
     queue->size = 0;
+    printf("Quantum Time = %d\n", quantumTime);
     while ((index < size) && (arr[index]->ArrivalTime <= time))
         enqueue(queue, arr[index++]);
     Process *currentProcess;
@@ -39,6 +40,7 @@ int main() {
         else
             enqueue(queue, currentProcess);
 
+        printf("####################Time = %d####################\n", time);
         print_process(currentProcess); // Comment This Line (For Debugging)
     }
 
