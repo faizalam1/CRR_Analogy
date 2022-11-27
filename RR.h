@@ -1,7 +1,3 @@
-//
-// Created by Fauzan Azhar on 11/27/2022.
-//
-
 #ifndef CRR_RR_H
 #define CRR_RR_H
 typedef struct Process{
