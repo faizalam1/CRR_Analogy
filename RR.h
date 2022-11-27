@@ -5,7 +5,7 @@
 #ifndef CRR_RR_H
 #define CRR_RR_H
 typedef struct Process{
-    int processID;
+    int ProcessID;
     int ArrivalTime;
     int BurstTime;
     int RemainingBurstTime;

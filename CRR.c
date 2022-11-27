@@ -8,13 +8,13 @@ int main() {
     scanf(" %d", &size);
     Process *arr[size];
     take_input(arr, size);
-    int QuantumTime = 1, Time, index = 0;
-    Time = arr[index]->ArrivalTime;
+    int quantumTime = 1, time, index = 0;
+    time = arr[index]->ArrivalTime;
     LinkedList *queue = (LinkedList *) malloc(sizeof(LinkedList));
     queue->head = (Node *) malloc(sizeof(Node));
     queue->tail = queue->head;
     queue->size = 0;
-    while ((index < size) && (arr[index]->ArrivalTime <= Time))
+    while ((index < size) && (arr[index]->ArrivalTime <= time))
         enqueue(queue, arr[index++]);
     Process *currentProcess;
     int RBT;
@@ -23,19 +23,19 @@ int main() {
         currentProcess = dequeue(queue)->data;
         RBT = currentProcess->RemainingBurstTime;
 
-        if (RBT >= QuantumTime) {
-            currentProcess->RemainingBurstTime = RBT - QuantumTime;
-            Time += QuantumTime;
+        if (RBT >= quantumTime) {
+            currentProcess->RemainingBurstTime = RBT - quantumTime;
+            time += quantumTime;
         } else{
-            Time += RBT;
+            time += RBT;
             currentProcess->RemainingBurstTime = 0;
         }
 
-        while ((index < size) && (arr[index]->ArrivalTime <= Time))
+        while ((index < size) && (arr[index]->ArrivalTime <= time))
             enqueue(queue, arr[index++]);
 
         if (currentProcess->RemainingBurstTime == 0)
-            currentProcess->CompletionTime = Time;
+            currentProcess->CompletionTime = time;
         else
             enqueue(queue, currentProcess);
 
@@ -57,7 +57,7 @@ void take_input(Process *arr[], int size){
         printf("Enter Process # %d Details:\n", i + 1);
         scanf(" %d,%d,%d", &ProcessID, &ArrivalTime, &BurstTime);
         arr[i] = (Process *) malloc(sizeof(Process));
-        arr[i]->processID = ProcessID;
+        arr[i]->ProcessID = ProcessID;
         arr[i]->ArrivalTime = ArrivalTime;
         arr[i]->BurstTime = BurstTime;
         arr[i]->RemainingBurstTime = BurstTime;
@@ -104,7 +104,7 @@ void merge(Process *arr[], int start, int mid, int end){
 
 void print_process(Process *process){
     printf("--------------------Process--------------------\n");
-    printf("     Process ID = %d\n", process->processID);
+    printf("     Process ID = %d\n", process->ProcessID);
     printf("     Process Arrival Time = %d\n", process->ArrivalTime);
     printf("     Process Burst Time = %d\n", process->BurstTime);
     printf("     Process Remaining Burst Time = %d\n", process->RemainingBurstTime);
