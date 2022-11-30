@@ -35,8 +35,11 @@ int main() {
         while ((index < size) && (arr[index]->ArrivalTime <= time))
             enqueue(queue, arr[index++]);
 
-        if (currentProcess->RemainingBurstTime == 0)
+        if (currentProcess->RemainingBurstTime == 0){
             currentProcess->CompletionTime = time;
+            currentProcess->TurnaroundTime = time - currentProcess->ArrivalTime;
+            currentProcess->WaitingTime = currentProcess->TurnaroundTime - currentProcess->BurstTime;
+        }
         else
             enqueue(queue, currentProcess);
 
@@ -63,6 +66,7 @@ void take_input(Process *arr[], int size){
         arr[i]->ArrivalTime = ArrivalTime;
         arr[i]->BurstTime = BurstTime;
         arr[i]->RemainingBurstTime = BurstTime;
+        arr[i]->CompletionTime = 0;
     }
     sort_by_AT(arr, 0, size - 1);
 }
@@ -111,6 +115,10 @@ void print_process(Process *process){
     printf("     Process Burst Time = %d\n", process->BurstTime);
     printf("     Process Remaining Burst Time = %d\n", process->RemainingBurstTime);
     printf("     Process Completion Time = %d\n", process->CompletionTime);
+    if (process->CompletionTime){
+    printf("     Process TurnAround Time = %d\n", process->TurnaroundTime);
+    printf("     Process Waiting Time = %d\n", process->WaitingTime);
+    }
     printf("--------------------Process--------------------\n");
 }
 

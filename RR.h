@@ -6,6 +6,8 @@ typedef struct Process{
     int BurstTime;
     int RemainingBurstTime;
     int CompletionTime;
+    int TurnaroundTime;
+    int WaitingTime;
 } Process;
 
 typedef struct Node{
