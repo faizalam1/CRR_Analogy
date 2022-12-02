@@ -53,7 +53,7 @@ int main() {
     }
 
     averageWaitingTime /= size;
-    printf("\nAverage Waiting Time is: %lf", averageWaitingTime);
+    printf("\nAverage Waiting Time is: %lf\n", averageWaitingTime);
 
     return 0;
 }
