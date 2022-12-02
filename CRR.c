@@ -49,11 +49,11 @@ int main() {
     double averageWaitingTime = 0;
     for (int i = 0; i < size; ++i){
         print_process(arr[i]);
-        averageWaitingTime += arr[i].WaitingTime;
+        averageWaitingTime += arr[i]->WaitingTime;
     }
 
     averageWaitingTime /= size;
-    printf("\nAverage Waiting Time is: %lf", averageWaitingTime)
+    printf("\nAverage Waiting Time is: %lf", averageWaitingTime);
 
     return 0;
 }
