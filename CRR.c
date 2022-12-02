@@ -46,9 +46,14 @@ int main() {
         printf("####################Time = %d####################\n", time);
         print_process(currentProcess); // Comment This Line (For Debugging)
     }
-
-    for (int i = 0; i < size; ++i)
+    double averageWaitingTime = 0;
+    for (int i = 0; i < size; ++i){
         print_process(arr[i]);
+        averageWaitingTime += arr[i].WaitingTime;
+    }
+
+    averageWaitingTime /= size;
+    printf("\nAverage Waiting Time is: %lf", averageWaitingTime)
 
     return 0;
 }
