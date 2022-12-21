@@ -47,6 +47,7 @@ int main() {
         print_process(currentProcess); // Comment This Line (For Debugging)
     }
     double averageWaitingTime = 0;
+    printf("Process:\tAT:\t\tBT:\t\tRBT:\t\tCT:\t\tTAT:\t\tWT:\n");
     for (int i = 0; i < size; ++i){
         print_process(arr[i]);
         averageWaitingTime += arr[i]->WaitingTime;
@@ -114,17 +115,7 @@ void merge(Process *arr[], int start, int mid, int end){
 }
 
 void print_process(Process *process){
-    printf("--------------------Process--------------------\n");
-    printf("     Process ID = %d\n", process->ProcessID);
-    printf("     Process Arrival Time = %d\n", process->ArrivalTime);
-    printf("     Process Burst Time = %d\n", process->BurstTime);
-    printf("     Process Remaining Burst Time = %d\n", process->RemainingBurstTime);
-    printf("     Process Completion Time = %d\n", process->CompletionTime);
-    if (process->CompletionTime){
-    printf("     Process TurnAround Time = %d\n", process->TurnaroundTime);
-    printf("     Process Waiting Time = %d\n", process->WaitingTime);
-    }
-    printf("--------------------Process--------------------\n");
+    printf("%d\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\t\t%d\n", process->ProcessID, process->ArrivalTime, process->BurstTime, process->RemainingBurstTime, process->CompletionTime, process->TurnaroundTime, process->WaitingTime);
 }
 
 void enqueue(LinkedList *queue, void *data) {
